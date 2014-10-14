@@ -12,6 +12,15 @@ dayzHiveRequest = [];
 initialized = false;
 dayz_previousID = 0;
 
+//Server Name
+if(Overpoch)then{
+	server_name = "0.15 - Overpoch Chernarus";
+}else{
+	server_name = "0.15 - Epoch Chernarus";
+};
+//Load adminlist early
+execVM "admintools\AdminList.sqf";
+
 //disable greeting menu 
 player setVariable ["BIS_noCoreConversations", true];
 //disable radio messages to be heard and shown in the left lower corner of the screen
@@ -103,8 +112,27 @@ execVM "\z\addons\dayz_code\external\DynamicWeatherEffects.sqf";
 
 #include "\z\addons\dayz_code\system\BIS_Effects\init.sqf"
 
+	//DayZ Watermark
+if(WaterMarkScript)then{
+	if (!isNil "server_name") then {
+	  [] spawn {
+		  waitUntil {(!isNull Player) and (alive Player) and (player == player)};
+		  waituntil {!(isNull (findDisplay 46))};
+		  5 cutRsc ["wm_disp","PLAIN"];
+		  ((uiNamespace getVariable "wm_disp") displayCtrl 1) ctrlSetText server_name;
+	  };
+	};
+};
+
 if (!isDedicated) then {
 	if (DZE_AsReMix_PLAYER_HUD) then {
 		execVM "addons\playerhud\playerHud.sqf"//AsReMix Player HUD
 	};
+};
+//wait before admin script is active
+sleep 5; // wait 5 seconds before starting tools
+if(adminScript)then{
+	// Epoch Admin Tools
+	[] execVM "admintools\Activate.sqf";
+	[] execVM "admintools\tools\adminbuild\keypress.sqf";
 };
