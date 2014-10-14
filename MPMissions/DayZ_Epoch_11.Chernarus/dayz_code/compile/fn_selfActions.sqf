@@ -441,7 +441,9 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	// Study Body
 	if (_player_studybody) then {
 		if (s_player_studybody < 0) then {
-			s_player_studybody = player addAction [localize "str_action_studybody", "\z\addons\dayz_code\actions\study_body.sqf",_cursorTarget, 0, false, true, "",""];
+		 // --------ZUPA - Check Wallet --------
+				s_player_studybody = player addAction [("<t color=""#FF0000"">"+("Check Wallet") + "</t>"), "gold\check_wallet.sqf",_cursorTarget, 0, false, true, "",""];
+			// ---- ZUPA END ---
 		};
 	} else {
 		player removeAction s_player_studybody;
@@ -546,6 +548,31 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		{player removeAction _x} count s_player_combi;s_player_combi = [];
 		s_player_unlockvault = -1;
 	};
+	
+	
+			//banking
+	
+	if(_typeOfCursorTarget in DZE_UnLockedStorage and (player distance _cursorTarget < 3)) then {
+		if (s_bank_dialog < 0) then {
+				s_bank_dialog = player addAction ["Online Banking", "gold\bank_dialog.sqf",_cursorTarget, 3, true, true, "", ""];	
+		};
+	} else {
+     	player removeAction s_bank_dialog;
+		s_bank_dialog = -1;
+	};
+	
+	// banking atm
+	
+	if(_typeOfCursorTarget in DZE_ATM  and (player distance _cursorTarget < 3)) then {		
+		if (s_bank_dialog2 < 0) then {
+			s_bank_dialog2 = player addAction ["Bank ATM", "gold\bank_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};			
+	} else {		
+		player removeAction s_bank_dialog2;
+		s_bank_dialog2 = -1;
+	};
+	
+	
 
 	//Allow owner to pack vault
 	if(_typeOfCursorTarget in DZE_UnLockedStorage && _ownerID != "0" && (player distance _cursorTarget < 3)) then {
@@ -575,6 +602,16 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	} else {
 		player removeAction s_player_information;
 		s_player_information = -1;
+	};
+	
+	// Zupa- SC - Give Money
+	if (_isMan and _isAlive and !_isZombie and !_isAnimal and !(_traderType in serverTraders)) then {
+		if (s_givemoney_dialog < 0) then {
+			s_givemoney_dialog = player addAction [format["Give Money to %1", (name _cursorTarget)], "gold\give_player_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_givemoney_dialog;
+		s_givemoney_dialog = -1;
 	};
 	
 	//Fuel Pump
@@ -930,6 +967,18 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	s_player_fuelauto = -1;
 	player removeAction s_player_fuelauto2;
 	s_player_fuelauto2 = -1;
+	
+		// Zupa - SC - reset.
+	player removeAction s_givemoney_dialog;
+	s_givemoney_dialog = -1;
+	player removeAction s_bank_dialog;
+	s_bank_dialog = -1;
+	player removeAction s_bank_dialog2;
+	s_bank_dialog2 = -1;
+	player removeAction s_player_packOBJ;
+	s_player_packOBJ = -1;
+
+
 };
 
 

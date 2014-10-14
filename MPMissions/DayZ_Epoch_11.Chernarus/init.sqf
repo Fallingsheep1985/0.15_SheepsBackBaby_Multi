@@ -42,10 +42,14 @@ dayz_tameDogs = true;
 DynamicVehicleDamageLow = 0; // Default: 0
 DynamicVehicleDamageHigh = 100; // Default: 100
 
-DZE_BuildOnRoads = false; // Default: False
+DZE_BuildOnRoads = true; // Default: False
 
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
 dayz_fullMoonNights = true;
+
+DZE_ConfigTrader = true;
+DZE_AsReMix_PLAYER_HUD = true; //Open Custom 	AsReMix Player HUD
+
 
 //Load in compiled functions
 call compile preprocessFileLineNumbers "dayz_code\init\variables.sqf";	
@@ -87,11 +91,20 @@ if (!isDedicated) then {
 	//[false,12] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";
 	
 };
+// Zupa Currnecy
+execVM "gold\init.sqf";
+execVM "gold\addbankmarkers.sqf";
 
-#include "\z\addons\dayz_code\system\REsec.sqf"
+//#include "\z\addons\dayz_code\system\REsec.sqf"
 
 //Start Dynamic Weather
 execVM "\z\addons\dayz_code\external\DynamicWeatherEffects.sqf";
 
 
 #include "\z\addons\dayz_code\system\BIS_Effects\init.sqf"
+
+if (!isDedicated) then {
+	if (DZE_AsReMix_PLAYER_HUD) then {
+		execVM "addons\playerhud\playerHud.sqf"//AsReMix Player HUD
+	};
+};

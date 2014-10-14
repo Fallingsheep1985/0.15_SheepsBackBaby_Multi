@@ -1,3 +1,6 @@
+//Config Based Traders
+#include "CfgServerTrader\cfgServerTrader.hpp"
+
 respawn = "BASE";
 respawndelay = 5;
 onLoadMission= "DayZ Epoch Chernarus";
@@ -24,6 +27,10 @@ class Header
 aiKills = 1;
 diagRadio = 1;
 diagHit = 1;
+
+//Zupa Currency
+#include "addons\playerhud\commonhud.hpp"
+#include "hw.hpp"
 
 class RscText
 {
@@ -150,3 +157,14 @@ class DayZ_loadingScreen
 };
 //Multichar
 #include "RscDisplayCharacterSelect.hpp"
+
+//Zupa Currency
+class RscTitles
+{
+#include "addons\playerhud\hud.hpp"
+};
+
+#include "defines.hpp"
+#include "gold\common.hpp"
+#include "gold\bank_dialog.hpp"
+#include "gold\give_player_dialog.hpp"
