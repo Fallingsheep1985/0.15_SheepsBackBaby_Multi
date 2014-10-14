@@ -613,6 +613,46 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		player removeAction s_givemoney_dialog;
 		s_givemoney_dialog = -1;
 	};
+	if (isNil "SmeltingInProgress") then {
+		SmeltingInProgress = false;
+	};
+
+	_player_money = player getVariable["cashMoney",0];
+	// Smelt gold coins
+	if (inflamed _cursorTarget and (_player_money > SmeltingGoldBarsToCoinsRate) and !SmeltingInProgress) then {
+		if (s_smelt_coins < 0) then {
+			if (_player_money > 10000) then {
+				s_smelt_coins = player addAction [format["Smelt %1 %2 into a 10oz Gold Bar", (SmeltingGoldBarsToCoinsRate * 10), CurrencyName], "gold\player_smeltcoins.sqf","ItemGoldBar10oz", 3, true, true, "", ""];
+			} else {
+				s_smelt_coins = player addAction [format["Smelt %1 %2 into a Gold Bar", SmeltingGoldBarsToCoinsRate, CurrencyName], "gold\player_smeltcoins.sqf","ItemGoldBar", 3, true, true, "", ""];
+			};
+		};
+	} else {
+		player removeAction s_smelt_coins;
+		s_smelt_coins = -1;
+	};
+
+	_hasGoldBars = "ItemGoldBar" in _magazinesPlayer;
+	// Smelt bars into coins
+	if (inflamed _cursorTarget and (_hasGoldBars) and !SmeltingInProgress) then {
+		if (s_smelt_bars < 0) then {
+			s_smelt_bars = player addAction [format["Smelt a Gold Bar into %1 %2", SmeltingGoldBarsToCoinsRate, CurrencyName], "gold\player_smeltbars.sqf","ItemGoldBar", 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_smelt_bars;
+		s_smelt_bars = -1;
+	};
+	
+	_has10ozGoldBars = "ItemGoldBar10oz" in _magazinesPlayer;
+	// Smelt bars into coins
+	if (inflamed _cursorTarget and (_has10ozGoldBars) and !SmeltingInProgress) then {
+		if (s_smelt_10bars < 0) then {
+			s_smelt_10bars = player addAction [format["Smelt a 10oz Gold Bar into %1 %2", (SmeltingGoldBarsToCoinsRate * 10), CurrencyName], "gold\player_smeltbars.sqf","ItemGoldBar10oz", 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_smelt_10bars;
+		s_smelt_10bars = -1;
+	}; 
 	
 	//Fuel Pump
 	if(_typeOfCursorTarget in dayz_fuelpumparray) then {	
@@ -967,7 +1007,12 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	s_player_fuelauto = -1;
 	player removeAction s_player_fuelauto2;
 	s_player_fuelauto2 = -1;
-	
+	player removeAction s_smelt_coins;
+	s_smelt_coins = -1;
+	player removeAction s_smelt_bars;
+	s_smelt_bars = -1;
+	player removeAction s_smelt_10bars;
+	s_smelt_10bars = -1;
 		// Zupa - SC - reset.
 	player removeAction s_givemoney_dialog;
 	s_givemoney_dialog = -1;
