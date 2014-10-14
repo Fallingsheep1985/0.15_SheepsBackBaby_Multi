@@ -2360,6 +2360,29 @@ UPDATE `Traders_DATA` SET `qty` = '2' WHERE `afile` = 'trade_any_boat';
 UPDATE `Traders_DATA` SET `qty` = '10' WHERE `afile` = 'trade_any_bicycle';
 
 --
+-- Single Currency
+--
+
+-- ----------------------------
+-- Table structure for `banking_data`
+-- ----------------------------
+DROP TABLE IF EXISTS `banking_data`;
+CREATE TABLE `banking_data` (
+  `PlayerUID` varchar(20) NOT NULL DEFAULT '0',
+  `PlayerName` varchar(128) NOT NULL DEFAULT 'Null',
+  `BankSaldo` bigint(24) NOT NULL DEFAULT '0',
+  `LastUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`PlayerUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `character_data`
+-- ----------------------------
+
+ALTER TABLE Character_DATA ADD CashMoney int(11) NOT NULL DEFAULT 0 AFTER Infected;
+
+
+--
 -- Multi Character
 --
 
@@ -2367,10 +2390,6 @@ ALTER TABLE `Character_DATA` ADD COLUMN `Slot` TINYINT UNSIGNED NOT NULL DEFAULT
 
 --
 -- Recommended sql events
---
-
---
--- http://dayzepoch.com/wiki/index.php?title=Server_Installation_Instructions_Extended
 --
 
 -- ----------------------------
