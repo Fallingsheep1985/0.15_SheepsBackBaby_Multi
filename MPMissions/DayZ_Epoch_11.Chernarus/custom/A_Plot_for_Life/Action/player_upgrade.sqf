@@ -18,6 +18,7 @@ _needText = localize "str_epoch_player_246";
 _findNearestPoles = nearestObjects [(vehicle player), ["Plastic_Pole_EP1_DZ"], _distance];
 _findNearestPole = [];
 
+_isBuildAdmin = (getPlayerUID player) in WG_adminBuild;
 {
 	if (alive _x) then {
 		_findNearestPole set [(count _findNearestPole),_x];
@@ -96,43 +97,56 @@ if ((count _upgrade) > 0) then {
 	_missing = "";
 	
 	_proceed = true;
-	{
-		_itemIn = _x select 0;
-		_countIn = _x select 1;
-		_qty = { (_x == _itemIn) || (configName(inheritsFrom(configFile >> "cfgMagazines" >> _x)) == _itemIn) } count magazines player;
-		if(_qty < _countIn) exitWith { _missing = _itemIn; _missingQty = (_countIn - _qty); _proceed = false; };
-	} forEach _requirements;
+	if (!_isBuildAdmin) then {
+
+
+		{
+			_itemIn = _x select 0;
+			_countIn = _x select 1;
+			_qty = { (_x == _itemIn) || (configName(inheritsFrom(configFile >> "cfgMagazines" >> _x)) == _itemIn) } count magazines player;
+			if(_qty < _countIn) exitWith { _missing = _itemIn; _missingQty = (_countIn - _qty); _proceed = false; };
+
+		} forEach _requirements;
+	};
 	
 	if (_proceed) then {
-		[1,1] call dayz_HungerThirst;
-		player playActionNow "Medic";
-		[player,20,true,(getPosATL player)] spawn player_alertZombies;
+		if (!_isBuildAdmin) then {
+			[1,1] call dayz_HungerThirst;
+			player playActionNow "Medic";
+			[player,20,true,(getPosATL player)] spawn player_alertZombies;
+		};
 	
 		_temp_removed_array = [];
 		_removed_total = 0;
 		_tobe_removed_total = 0;
 		
-		{
-			_removed = 0;
-			_itemIn = _x select 0;
-			_countIn = _x select 1;
-			// diag_log format["Recipe Finish: %1 %2", _itemIn,_countIn];
-			_tobe_removed_total = _tobe_removed_total + _countIn;
 
-			{					
-				if( (_removed < _countIn) && ((_x == _itemIn) || configName(inheritsFrom(configFile >> "cfgMagazines" >> _x)) == _itemIn)) then {
-					_num_removed = ([player,_x] call BIS_fnc_invRemove);
-					_removed = _removed + _num_removed;
-					_removed_total = _removed_total + _num_removed;
-					if(_num_removed >= 1) then {
-						_temp_removed_array set [count _temp_removed_array,_x];
+		if (!_isBuildAdmin) then {
+			{
+				_removed = 0;
+
+
+				_itemIn = _x select 0;
+				_countIn = _x select 1;
+				// diag_log format["Recipe Finish: %1 %2", _itemIn,_countIn];
+				_tobe_removed_total = _tobe_removed_total + _countIn;
+
+
+				
+				{					
+					if( (_removed < _countIn) && ((_x == _itemIn) || configName(inheritsFrom(configFile >> "cfgMagazines" >> _x)) == _itemIn)) then {
+						_num_removed = ([player,_x] call BIS_fnc_invRemove);
+						_removed = _removed + _num_removed;
+						_removed_total = _removed_total + _num_removed;
+						if(_num_removed >= 1) then {
+							_temp_removed_array set [count _temp_removed_array,_x];
+						};
 					};
-				};
-		
-			} forEach magazines player;
 
-		} forEach _requirements;
-
+				
+				} forEach magazines player;
+			} forEach _requirements;
+		};
 		// all parts removed proceed
 		if (_tobe_removed_total == _removed_total) then {
 			
@@ -142,6 +156,8 @@ if ((count _upgrade) > 0) then {
 			// Get direction
 			_dir = getDir _obj;
 
+			//Get Vector
+			_vector = [(vectorDir _obj),(vectorUp _obj)];
 			// Current charID
 			_objectCharacterID 	= _obj getVariable ["CharacterID","0"];
 			_ownerID = _obj getVariable["ownerPUID","0"];
@@ -153,6 +169,8 @@ if ((count _upgrade) > 0) then {
 
 			// Set direction
 			_object setDir _dir;
+			// Set vector
+			_object setVectorDirAndUp _vector;
 
 			// Set location
 			_object setPosATL _location;
@@ -175,7 +193,7 @@ if ((count _upgrade) > 0) then {
 			};
 
 			_playerUID = [player] call FNC_GetPlayerUID;
-			PVDZE_obj_Swap = [_objectCharacterID,_object,[_dir,_location, _playerUID],_classname,_obj,player];
+			PVDZE_obj_Swap = [_objectCharacterID,_object,[_dir,_location,_vector,_playerUID],_classname,_obj,player];
 			publicVariableServer "PVDZE_obj_Swap";
 
 			player reveal _object;

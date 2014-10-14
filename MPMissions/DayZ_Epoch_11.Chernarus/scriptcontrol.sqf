@@ -51,6 +51,13 @@ DZE_PlotOwnership = true;
 DZE_APlotforLife = true;
 DZE_modularBuild = true;
 
+//Build Vectors
+DZE_noRotate = []; //Objects that cannot be rotated. Ex: DZE_noRotate = ["VaultStorageLocked"]
+DZE_curPitch = 45; //Starting rotation angle. Only 1, 5, 45, or 90.
+
+//Optional, only if you are using Admin Build
+WG_adminBuild = Adminlist; //Fill with player UID's
+
 //Overpoch on (modifies loot and traders to sell/spawn overwatch items)
 Overpoch = false;
 

@@ -55,6 +55,7 @@ if ((_characterID == dayz_combination) || (_ownerID == _playerUID)) then {
 	};
 	
 	_dir = direction _obj;
+	_vector = [(vectorDir _obj), (vectorUp _obj)];
 	_pos	= _obj getVariable["OEMPos",(getposATL _obj)];
 	_objectID 	= _obj getVariable["ObjectID","0"];
 	_objectUID	= _obj getVariable["ObjectUID","0"];
@@ -82,6 +83,7 @@ if ((_characterID == dayz_combination) || (_ownerID == _playerUID)) then {
 			// Remove locked vault
 			deleteVehicle _obj;
 			_holder setdir _dir;
+			_holder setVectorDirAndUp _vector;
 			_holder setPosATL _pos;
 			player reveal _holder;
 	

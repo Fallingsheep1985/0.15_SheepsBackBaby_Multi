@@ -113,10 +113,9 @@ if (!isDedicated) then {
 		player_build_create =		compile preprocessFileLineNumbers "Custom\A_Plot_for_Life\Action\player_build_create.sqf";
 		player_build_controls =		compile preprocessFileLineNumbers "Custom\A_Plot_for_Life\Action\player_build_controls.sqf";
 		player_build_publish =		compile preprocessFileLineNumbers "Custom\A_Plot_for_Life\Action\player_build_publish.sqf";
-		DZE_snap_build_file = 		"Custom\Snap_Pro\snap_build.sqf"; // Set as a global variable as it is also referenced in snapbuild.sqf
-		snap_build = 				compile preprocessFileLineNumbers DZE_snap_build_file;
+		snap_build = compile preprocessFileLineNumbers "custom\snap_pro\snap_build.sqf";
 	} else {
-		player_build =				compile preprocessFileLineNumbers "Custom\A_Plot_for_Life\Action\player_build.sqf";
+		player_build = compile preprocessFileLineNumbers "custom\snap_pro\player_build.sqf";
 	};
 	
 	FNC_check_owner =			compile preprocessFileLineNumbers "Custom\A_Plot_for_Life\Compile\fn_check_owner.sqf";
