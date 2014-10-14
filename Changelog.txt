@@ -12,3 +12,7 @@ Added watermark
 Added scriptcontrol
 Moved config options to script control
 Added server welcome credits
+
+0003
+Added plotpole 4 life+ Snap Pro + Admin FastBuild + Vector Build
+Removed the admin build menu (redundant just spawn build crate)
