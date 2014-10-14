@@ -11,13 +11,9 @@ dayZ_instance =	11;					//The instance
 dayzHiveRequest = [];
 initialized = false;
 dayz_previousID = 0;
+//load configs and options
+execVM "scriptcontrol.sqf";
 
-//Server Name
-if(Overpoch)then{
-	server_name = "0.15 - Overpoch Chernarus";
-}else{
-	server_name = "0.15 - Epoch Chernarus";
-};
 //Load adminlist early
 execVM "admintools\AdminList.sqf";
 
@@ -28,37 +24,7 @@ enableRadio false;
 // May prevent "how are you civillian?" messages from NPC
 enableSentences false;
 
-// DayZ Epoch config
-spawnShoremode = 1; // Default = 1 (on shore)
-spawnArea= 1500; // Default = 1500
-
-MaxVehicleLimit = 300; // Default = 50
-MaxDynamicDebris = 500; // Default = 100
-dayz_MapArea = 14000; // Default = 10000
-dayz_maxLocalZombies = 30; // Default = 30 
-
-dayz_paraSpawn = false;
-
-dayz_minpos = -1; 
-dayz_maxpos = 16000;
-
-dayz_sellDistance_vehicle = 10;
-dayz_sellDistance_boat = 30;
-dayz_sellDistance_air = 40;
-
-dayz_maxAnimals = 5; // Default: 8
-dayz_tameDogs = true;
-DynamicVehicleDamageLow = 0; // Default: 0
-DynamicVehicleDamageHigh = 100; // Default: 100
-
-DZE_BuildOnRoads = true; // Default: False
-
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
-dayz_fullMoonNights = true;
-
-DZE_ConfigTrader = true;
-DZE_AsReMix_PLAYER_HUD = true; //Open Custom 	AsReMix Player HUD
-
 
 //Load in compiled functions
 call compile preprocessFileLineNumbers "dayz_code\init\variables.sqf";	

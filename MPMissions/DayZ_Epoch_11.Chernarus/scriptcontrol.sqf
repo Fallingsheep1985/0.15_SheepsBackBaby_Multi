@@ -1,8 +1,43 @@
 //Script Control - Allows you to customize the repack by turning certain scripts on or off - true = on /false = off
+// DayZ Epoch config
+spawnShoremode = 1; // Default = 1 (on shore)
+spawnArea= 1500; // Default = 1500
 
+MaxVehicleLimit = 300; // Default = 50
+MaxDynamicDebris = 500; // Default = 100
+dayz_MapArea = 14000; // Default = 10000
+dayz_maxLocalZombies = 30; // Default = 30 
 
-//Overpoch on (modifies loot and traders to seel/spawn overwatch items)
+dayz_paraSpawn = false;
+
+dayz_minpos = -1; 
+dayz_maxpos = 16000;
+
+dayz_sellDistance_vehicle = 10;
+dayz_sellDistance_boat = 30;
+dayz_sellDistance_air = 40;
+
+dayz_maxAnimals = 5; // Default: 8
+dayz_tameDogs = true; // can players tame dogs
+DynamicVehicleDamageLow = 0; // Default: 0
+DynamicVehicleDamageHigh = 100; // Default: 100
+
+DZE_BuildOnRoads = true; // can players build on roads 
+
+dayz_fullMoonNights = true;
+
+DZE_ConfigTrader = true; //must have Database traders setup if you turn this off!
+DZE_AsReMix_PLAYER_HUD = true; //AsReMix Player HUD
+
+//Overpoch on (modifies loot and traders to sell/spawn overwatch items)
 Overpoch = false;
+
+//Server Name
+if(Overpoch)then{
+	server_name = "0.15 - Overpoch Chernarus";
+}else{
+	server_name = "0.15 - Epoch Chernarus";
+};
 
 //Admintools
 AdminScript = true;

@@ -7,3 +7,7 @@ combined SQL's into 1 file
 0002
 Fixed hud icons not showing
 Fixed NPG.paa cant be found error
+Added admintools
+Added watermark
+Added scriptcontrol
+Moved config options to script control
