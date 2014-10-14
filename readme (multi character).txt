@@ -31,14 +31,18 @@ YOU HAVE TO RENAME THE PBO TO MATCH THE ONE YOU ALREADY USE!
 ////////////////////////////////////////////////////////////////
 //				ADMIN SETUP
 ////////////////////////////////////////////////////////////////
+
+COPY THE 2 DLLs TO YOUR ROOT SERVER DIRECTORY 
+(SAME PLACE AS Steam.dll,ssleay.dll)
+
 ADMIN TOOLS MENU
 
 1. open "admintools\AdminList.sqf"
-2. change 120958982 or (######) to your player ID
+2. change 1111111111 or (######) to your player ID
 
 BASE BUILDING
 1. open "init\variables2.sqf"
-2. change 120958982 or (######) to your player ID
+2. change 11111111111 or (######) to your player ID
 
 
 ////////////////////////////////////////////////////////////////
