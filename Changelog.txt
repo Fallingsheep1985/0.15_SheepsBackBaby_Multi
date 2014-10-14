@@ -3,3 +3,7 @@ Clean un edited epoch 1.0.5.1
 added multichar+singlecurrency+999 DLL
 added battleEye filters from 0.14 pack
 combined SQL's into 1 file
+
+0002
+Fixed hud icons not showing
+Fixed NPG.paa cant be found error
