@@ -50,6 +50,7 @@ if (isServer) then {
 	"PVDZE_plr_Died"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerDied};
 	"PVDZE_plr_Save"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerSync;};
 	"PVDZE_obj_Publish"		addPublicVariableEventHandler {(_this select 1) call server_publishObj};
+	"PVDZE_fullobj_Publish"		addPublicVariableEventHandler {(_this select 1) call server_publishFullObject}
 	"PVDZE_veh_Update"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_updateObject};
 	//Multichar
 	"PVDZE_plr_Characters"	addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerCharacters};

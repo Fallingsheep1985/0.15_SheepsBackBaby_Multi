@@ -11,3 +11,4 @@ Added admintools
 Added watermark
 Added scriptcontrol
 Moved config options to script control
+Added server welcome credits

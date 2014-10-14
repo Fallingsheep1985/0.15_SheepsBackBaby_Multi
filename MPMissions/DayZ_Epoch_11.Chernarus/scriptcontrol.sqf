@@ -33,7 +33,9 @@ DZE_BuildingLimit = 400;//how many items can a player build
 DZE_PlayerZed = false; // should players have chance of becoming a ZOMBIE when they respawn after death
 DZE_LootSpawnTimer = 10;// in minutes
 DZE_MissionLootTable = true; //Custom Loot Tables
-DZE_selfTransfuse = true; //Self blood bag
+
+//Self blood bag
+DZE_selfTransfuse = true; 
 DZE_selfTransfuse_Values = [
 6000, //Blood amount
  10,  // Chance of Infection
@@ -43,6 +45,11 @@ dayz_fullMoonNights = true;
 
 DZE_ConfigTrader = true; //must have Database traders setup if you turn this off!
 DZE_AsReMix_PLAYER_HUD = true; //AsReMix Player HUD
+
+//Plot pole 4 life
+DZE_PlotOwnership = true;
+DZE_APlotforLife = true;
+DZE_modularBuild = true;
 
 //Overpoch on (modifies loot and traders to sell/spawn overwatch items)
 Overpoch = false;

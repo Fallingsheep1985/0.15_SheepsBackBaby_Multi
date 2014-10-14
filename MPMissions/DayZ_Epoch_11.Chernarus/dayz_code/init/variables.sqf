@@ -8,7 +8,9 @@ DonatorListZupa = ["76561198012464696","111111111"]; // bigger bank PUID
 MaxDonatorBankMoney = 1000000; // Bank size donators
 SmeltingGoldBarsToCoinsRate = 1000; // How many gold coins are in a gold bar
 //-----------------------------------Currency & Banking Configs END ---------------------------------//
-
+if (isNil "DayZ_UseSteamID") then {
+	DayZ_UseSteamID = true;
+};
 //Model Variables
 Bandit1_DZ = 	"Bandit1_DZ";
 Bandit2_DZ = 	"Bandit2_DZ";
@@ -197,6 +199,9 @@ dayz_locationsActive = [];
 Dayz_GUI_R = 0.38; // 0.7
 Dayz_GUI_G = 0.63; // -0.63
 Dayz_GUI_B = 0.26; // -0.26
+if (isNil "Dayz_Dark_UI") then {
+	Dayz_Dark_UI = false;
+};
 
 //Player self-action handles
 dayz_resetSelfActions = {
@@ -213,6 +218,7 @@ dayz_resetSelfActions = {
 	s_player_fillwater2 = 	-1;
 	s_player_fillfuel = 	-1;
 	s_player_grabflare = 	-1;
+	s_player_dropflare =	-1;
 	s_player_callzombies = 	-1;
 	s_player_showname = 	-1;
 	s_player_debuglootpos = 	-1;
@@ -260,6 +266,13 @@ dayz_resetSelfActions = {
 	s_player_heli_lift = -1;
 	s_player_heli_detach = -1;
 	s_player_lockUnlock_crtl = -1;
+	s_player_toggleSnap = -1;
+    s_player_toggleSnapSelect = -1;
+    s_player_toggleSnapSelectPoint=[];
+    snapActions = -1;
+	s_player_plot_boundary_on = -1;
+	s_player_plot_boundary_off = -1;
+	s_player_plot_take_ownership = -1;
 };
 call dayz_resetSelfActions;
 
@@ -273,6 +286,9 @@ s_player_madsci 		= 	[];
 s_player_parts 			= 	[];
 s_player_combi 			= 	[];
 
+//Modular player_build
+snapGizmos = [];
+snapGizmosNearby = [];
 //Initialize Medical Variables
 r_interrupt = 			false;
 r_doLoop = 				false;
@@ -537,6 +553,24 @@ if(isNil "DZE_StaticConstructionCount") then {
 if (isNil "DZE_selfTransfuse_Values") then {
 	DZE_selfTransfuse_Values = [12000, 15, 300];
 };
+if (isNil "helperDetach") then {
+	helperDetach = false;
+};
+if (isNil "DZE_modularBuild") then {
+	DZE_modularBuild = false;
+};
+if (isNil "DZE_snapExtraRange") then {
+	DZE_snapExtraRange = 0;
+};
+if (isNil "DZE_APlotforLife") then {
+	DZE_APlotforLife = false;
+};
+if (isNil "DZE_PlotOwnership") then {
+	DZE_PlotOwnership = false;
+};
+if (isNil "DZE_checkNearbyRadius") then {
+	DZE_checkNearbyRadius = 30;
+};
 
 // needed on server
 if(isNil "DZE_PlotPole") then {
@@ -546,6 +580,7 @@ if(isNil "DZE_maintainRange") then {
 	DZE_maintainRange = ((DZE_PlotPole select 0)+20);
 };
 
+DZE_snap_build_file = "";
 DZE_REPLACE_WEAPONS = [["Crossbow","ItemMatchbox","ItemHatchet"],["Crossbow_DZ","ItemMatchbox_DZE","ItemHatchet_DZE"]];
 
 if(isNil "dayz_zedSpawnVehCount") then {
@@ -586,6 +621,9 @@ dayz_fuelsources = ["Land_Ind_TankSmall","Land_fuel_tank_big","Land_fuel_tank_st
 
 DZE_Lock_Door = "";
 
+if (isNil "DZE_plotOwnershipExclusions") then {
+	DZE_plotTakeOwnershipItems = dayz_allowedObjects - (DZE_LockableStorage + ["Plastic_Pole_EP1_DZ","TentStorage","TentStorageDomed","TentStorageDomed2"]);
+};
 //init global arrays for Loot Chances
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\loot_init.sqf";
 
@@ -696,14 +734,22 @@ if(!isDedicated) then {
 //Current NearBy
 	dayz_CurrentNearByZombies = 0;
 //Max NearBy
-	dayz_maxNearByZombies = 60; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	if (isNil "dayz_maxNearByZombies") then {
+		dayz_maxNearByZombies = 60; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current total
+	};
 	dayz_currentGlobalZombies = 0;
 //Max global zeds.
-	dayz_maxGlobalZeds = 3000;
-	dayz_spawnDelay =		120;
-	dayz_spawnWait =		-120;
-	dayz_lootDelay =		3;
+	if (isNil "dayz_maxGlobalZeds") then {
+		dayz_maxGlobalZeds = 3000;
+	};
+	if (isNil "dayz_spawnDelay") then {
+		dayz_spawnDelay =		120;
+	};
+	dayz_spawnWait =		-(dayz_spawnDelay);
+	if (isNil "dayz_lootDelay") then {
+		dayz_lootDelay =		3;
+	};
 	dayz_lootWait =			-300;
 	//used to count global zeds around players
 	dayz_CurrentZombies = 0;
@@ -779,6 +825,8 @@ if(!isDedicated) then {
 	DZE_5 = false;
 	DZE_4 = false;
 	DZE_6 = false;
+	
+	DZE_F = false;
 
 	DZE_cancelBuilding = false;
 	DZE_PZATTACK = false;
