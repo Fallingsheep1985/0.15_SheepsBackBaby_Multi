@@ -212,17 +212,20 @@ trash[] = {
 ////////////////////////////////////////////////////////////////
 //			CREDITS
 ////////////////////////////////////////////////////////////////
+	NoxSicarius	
 	Kaysio (aka J0k3r)!
 	SchwEde (aka shinysonic)
 	Sgt M Everlast
 	MattL
 	AlexLawson
 	Carl
-	Each addon/script creator
-	The entire EPOCH team
-	The entire ARMA2 team
+	Credits to each addon/script creator
+	the entire EPOCH team
+	the entire ARMA2 team
 	Dean "Rocket" Hall & the entire DayZ team
-	The entire Open Dayz team & comunnity!
+	the entire Opendayz team & community
+	the entire Epochmod team & community
+
 	
 	
 ////////////////////////////////////////////////////////////////
@@ -288,7 +291,15 @@ Elevator
 Adjustable fog/view distance
 Fast Trading
 
+LEGAL STUFF
+Credits to each addon/script creator
+Credits to the entire EPOCH team
+Credits to the entire ARMA2 team
+Credits to Dean "Rocket" Hall & the entire DayZ team
+Credits to the entire Open Dayz team &  comunnity
 
+Epoch Admintools 1.9.1 
+I have permission from NoxSicarius to included these in the repack
 
 DAYZ MOD LICENSE SHARE ALIKE
 
