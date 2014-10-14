@@ -118,6 +118,10 @@ if (_characterID != "0") then {
 		_humanity = 	["humanity",_character] call server_getDiff2;
 		//_humanity = 	_character getVariable ["humanity",0];
 		//Soul start: SC Edit >>> collecting players cashmoney
+		
+		//Undefined var fix
+		_cashMoney = 0;
+		
 		_cashMoney = 	["cashMoney",_character] call server_getDiff2;
 		//Soul end: SC Edit
 		_character addScore _kills;		

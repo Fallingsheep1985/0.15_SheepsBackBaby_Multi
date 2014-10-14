@@ -558,6 +558,9 @@ generate_exp_damage = {
 
 server_getDiff =	{
 	private["_variable","_object","_vNew","_vOld","_result"];
+	//undefined var fix
+	_vNew = 0;
+	
 	_variable = _this select 0;
 	_object = 	_this select 1;
 	_vNew = 	_object getVariable[_variable,0];
@@ -576,6 +579,9 @@ server_getDiff =	{
 
 server_getDiff2 =	{
 	private["_variable","_object","_vNew","_vOld","_result"];
+	//undefined var fix
+	_vNew = 0;
+	
 	_variable = _this select 0;
 	_object = 	_this select 1;
 	_vNew = 	_object getVariable[_variable,0];
