@@ -40,12 +40,12 @@ while {true} do
 	_minutes2 = ((_minutes - (_hours*60)) min 60) max 0;if (_minutes2 < 10) then {_minutes2 = format ['0%1',_minutes2];};
     	
 	_vitals ctrlSetStructuredText parseText format ["
-		<t size='0.9'> %2 %5 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_humanity.paa'/>  <br/> 
-		<t size='0.9'> %3 </t><img size='0.8' align='right' image='custom\playerhud\icons\dollars.paa'/>   <br/>
-		<t size='0.9'> %13 </t><img size='0.8' align='right' image='custom\playerhud\icons\equip_safe_CA.paa'/>   <br/>
-		<t size='0.9'> %10 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_killh.paa'/>  <br/> 
-		<t size='0.9'> %9 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_killb.paa'/>  <br/>
-		<t size='0.9'> %4 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_zkill.paa'/>  <br/>	
+		<t size='0.9'> %2 %5 </t><img size='0.8' align='right' image='addons\playerhud\icons\As_humanity.paa'/>  <br/> 
+		<t size='0.9'> %3 </t><img size='0.8' align='right' image='addons\playerhud\icons\dollars.paa'/>   <br/>
+		<t size='0.9'> %13 </t><img size='0.8' align='right' image='addons\playerhud\icons\equip_safe_CA.paa'/>   <br/>
+		<t size='0.9'> %10 </t><img size='0.8' align='right' image='addons\playerhud\icons\As_killh.paa'/>  <br/> 
+		<t size='0.9'> %9 </t><img size='0.8' align='right' image='addons\playerhud\icons\As_killb.paa'/>  <br/>
+		<t size='0.9'> %4 </t><img size='0.8' align='right' image='addons\playerhud\icons\As_zkill.paa'/>  <br/>	
 	<t size='0.8' align='right'>%11h %12min UPTIME</t><br/>",
 	AsReMixhud_blood,   //1
 	AsReMixhud_humanity,//2
