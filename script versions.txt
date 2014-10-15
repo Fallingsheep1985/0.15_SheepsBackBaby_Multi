@@ -4,4 +4,7 @@ Plotpole for life - 2.44
 Vector Build - v3
 Snap Pro 1.4.1
 Single Currency -Zupa 1.1 updated to Souls 2.0
-Serverwelcome credits - V.1.3.7?
+Serverwelcome credits - V.1.3.7
+Custom loot -
+Watermark - 
+Scriptcontrol - 

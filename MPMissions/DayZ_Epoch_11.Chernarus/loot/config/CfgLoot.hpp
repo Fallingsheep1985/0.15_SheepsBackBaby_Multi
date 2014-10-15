@@ -123,11 +123,11 @@ class CfgLoot {
 		,{"ItemHeatPack",0.04}
 	};
 	medical[] = {
-		{"ItemBandage",0.5}
-		,{"ItemPainkiller",0.2}
-		,{"ItemMorphine",0.3}
-		,{"ItemEpinephrine",0.2}
-		,{"ItemAntibiotic",0.2}
+		{"ItemBandage",0.4}
+		,{"ItemPainkiller",0.15}
+		,{"ItemMorphine",0.2}
+		,{"ItemEpinephrine",0.1}
+		,{"ItemAntibiotic",0.1}
 		,{"ItemHeatPack",0.05}
 	};
 	hospital[] = {
@@ -269,7 +269,7 @@ class CfgLoot {
 		,{"ItemTankTrap",0.03}
 		,{"ItemComboLock",0.04}
 		,{"ItemSledgeHead",0.02}
-		,{"ItemDocument",0.1}
+		,{"ItemDocument",0.02}
 	};
 	clothes[] = {
 		{"Skin_RU_Policeman_DZ",0.11}
@@ -346,11 +346,11 @@ class CfgLoot {
 		,{"DZ_LargeGunBag_EP1",0.1}
 	};
 	militaryammo[] = {
-		{"2000Rnd_762x51_M134",0.2}
-		,{"29Rnd_30mm_AGS30",0.3}
-		,{"50Rnd_127x107_DSHKM",0.3}
-		,{"48Rnd_40mm_MK19",0.4}
-		,{"100Rnd_127x99_M2",0.5}
+		{"2000Rnd_762x51_M134",0.1}
+		,{"29Rnd_30mm_AGS30",0.2}
+		,{"50Rnd_127x107_DSHKM",0.2}
+		,{"48Rnd_40mm_MK19",0.2}
+		,{"100Rnd_127x99_M2",0.3}
 	};
 	pistols[] = {
 		{"Makarov",0.25}
@@ -379,7 +379,7 @@ class CfgLoot {
 		,{"Remington870_lamp",0.1}
 		,{"Crossbow_DZ",0.07}
 		,{"huntingrifle",0.05}
-		,{"Chainsaw",0.05}
+		,{"Chainsaw",0.01}
 	};
 	sniperrifles[] = {
 		{"AK_107_PSO",0.1}
@@ -397,11 +397,6 @@ class CfgLoot {
 		,{"VSS_vintorez",0.04}
 		,{"SCAR_H_LNG_Sniper_SD",0.03}
 		,{"M14_EP1",0.02}
-		,{"BAF_AS50_scoped",0.01}
-		,{"M110_NVG_EP1",0.01}
-		,{"M110_TWS_EP1",0.01}
-		,{"SCAR_H_LNG_Sniper",0.01}
-		,{"SCAR_H_LNG_Sniper_SD",0.01}
 		,{"DMR",0.01}
 	};
 	sniperriflesammo[] = {
@@ -414,10 +409,6 @@ class CfgLoot {
 		,{"5Rnd_762x51_M24",0.15}
 		,{"5x_22_LR_17_HMR",0.1}
 		,{"20Rnd_762x51_SB_SCAR",0.07}
-		,{"10Rnd_127x99_m107",0.01}
-		,{"5Rnd_127x99_as50",0.01}
-		,{"20Rnd_762x51_B_SCAR",0.05}
-		,{"20Rnd_762x51_SB_SCAR",0.05}
 		,{"20Rnd_9x39_SP5_VSS",0.05}
 	};
 	submachinegun[] = {
@@ -459,21 +450,8 @@ class CfgLoot {
 		,{"m8_holo_sd",0.02}
 		,{"m8_carbine",0.05}
 		,{"BAF_L85A2_RIS_SUSAT",0.02}
-		,{"SCAR_L_STD_HOLO",0.02}
-		,{"SCAR_L_STD_Mk4CQT",0.02}
-		,{"SCAR_L_CQC_CCO_SD",0.02}
-		,{"SCAR_L_CQC",0.02}
-		,{"SCAR_L_CQC_Holo",0.02}
 		,{"BAF_L85A2_RIS_Holo",0.01}
-		,{"SCAR_H_CQC_CCO",0.01}
-		,{"SCAR_H_CQC_CCO_SD",0.01}
-		,{"SCAR_H_STD_EGLM_Spect",0.01}
-		,{"SCAR_H_STD_TWS_SD",0.01}
 		,{"M4A1_HWS_GL_SD_Camo",0.01}
-		,{"BAF_L85A2_RIS_ACOG",0.01}
-		,{"BAF_L85A2_RIS_CWS",0.01}
-		,{"AA12_PMC",0.01}
-		,{"BAF_L85A2_UGL_ACOG",0.01}
 	};
 	assaultrifleammo[] = {
 		{"30Rnd_762x39_SA58",0.25}
@@ -481,11 +459,6 @@ class CfgLoot {
 		,{"30Rnd_556x45_Stanag",0.2}
 		,{"30Rnd_545x39_AK",0.11}
 		,{"30Rnd_556x45_StanagSD",0.12}
-		,{"20Rnd_762x51_B_SCAR",0.05}
-		,{"20Rnd_762x51_SB_SCAR",0.05}
-		,{"20Rnd_B_AA12_Pellets",0.02}
-		,{"20_B_AA12_74Slug",0.02}
-		,{"20Rnd_B_AA12_HE",0.01}
 		,{"20Rnd_762x51_FNFAL",0.07}
 	};
 	machineguns[] = {
