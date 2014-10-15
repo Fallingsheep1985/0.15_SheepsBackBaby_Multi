@@ -217,7 +217,6 @@ class RscProgressF
 
 /////////////
 
-/*
 class RscTextT
 {
 	access = 0;
@@ -236,7 +235,6 @@ class RscTextT
 	font = "Zeppelin32";
 	SizeEx = 0.03921;
 };
-*/
 class RscEdit
 {
 	access = 0;
