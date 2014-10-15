@@ -3,8 +3,8 @@
 
 respawn = "BASE";
 respawndelay = 5;
-onLoadMission= "DayZ Epoch Chernarus";
-OnLoadIntro = "Welcome to DayZ Epoch Chernarus";
+onLoadMission= "Welcome.";
+OnLoadIntro = "0.15 - Sheeps Back Baby!";
 OnLoadIntroTime = False;
 OnLoadMissionTime = False;
 disabledAI = true;
@@ -18,7 +18,7 @@ briefing = 0;
 debriefing = 0;
 
 onPauseScript = "";
-loadScreen = "pictures\loadscreen.jpg";";
+loadScreen = "pictures\loadscreen.jpg";
 
 class Header
 {
