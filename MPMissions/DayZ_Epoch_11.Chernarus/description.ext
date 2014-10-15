@@ -161,9 +161,6 @@ class DayZ_loadingScreen
 //Multichar
 #include "RscDisplayCharacterSelect.hpp"
 
-//Admin tools
-#include "admintools\dialog.hpp"
-
 //Zupa Currency
 class RscTitles
 {
