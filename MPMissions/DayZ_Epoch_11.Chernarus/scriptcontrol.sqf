@@ -1,4 +1,7 @@
 //Script Control - Allows you to customize the repack by turning certain scripts on or off - true = on /false = off
+//Load admin list early
+call compile preprocessFileLineNumbers  "admintools\AdminList.sqf";
+
 // DayZ Epoch config
 spawnShoremode = 1; // Default = 1 (on shore)
 spawnArea= 1500; // Default = 1500

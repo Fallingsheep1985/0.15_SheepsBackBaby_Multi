@@ -34,8 +34,6 @@ progressLoadingScreen 0.4;
 call compile preprocessFileLineNumbers "dayz_code\init\compiles.sqf";
 progressLoadingScreen 0.5;
 call compile preprocessFileLineNumbers "server_traders.sqf";				//Compile trader configs
-//Load adminlist early
-call compile preprocessFileLineNumbers  "admintools\AdminList.sqf";
 progressLoadingScreen 1.0;
 
 "filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.750, 6, 4]; setToneMapping "Filmic";
