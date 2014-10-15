@@ -11,6 +11,9 @@ disabledAI = true;
 disableChannels[]={0,2,6};
 enableItemsDropping = 0;
 
+//Custom loot
+#include "loot\config\CfgBuildinLoot.hpp"
+
 briefing = 0;
 debriefing = 0;
 
